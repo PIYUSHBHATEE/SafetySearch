@@ -112,45 +112,47 @@ graph TD
 
 This structure separates concerns, making it easy to maintain and add new toolsets in the future.
 
-## 📋 Example Usage
+## 📋 Example Prompts and Tool Calls
+
+Here are some examples of user prompts and the corresponding tool calls they would trigger.
 
 ### Food Safety Tools
-*   **Search for recalls of "ice cream"**
+*   **User Prompt:** "Are there any recalls for ice cream?"
     ```
     food.search_recalls_by_product_description(query="ice cream")
     ```
 
-*   **Find recalls for "Bakery" products**
+*   **User Prompt:** "Show me recent recalls for bakery products."
     ```
     food.search_recalls_by_product_type(product_type="Bakery")
     ```
 
-*   **Check for recalls on "Ben & Jerry's Chocolate Fudge Brownie"**
+*   **User Prompt:** "I bought some 'Ben & Jerry's Chocolate Fudge Brownie' ice cream, is it safe?"
     ```
     food.search_recalls_by_specific_product(product_name="Ben & Jerry's Chocolate Fudge Brownie")
     ```
 
-*   **Find recalls with classification "Class I"**
+*   **User Prompt:** "List all the most serious food recalls."
     ```
     food.search_recalls_by_classification(classification="Class I")
     ```
 
-*   **Search for a recall with code info "222268"**
+*   **User Prompt:** "The code on my food package is '222268'. Is there a recall for it?"
     ```
     food.search_recalls_by_code_info(code_info="222268")
     ```
 
-*   **Get all recalls from the last 14 days**
+*   **User Prompt:** "What food recalls have happened in the last two weeks?"
     ```
     food.search_recalls_by_date(days=14)
     ```
 
-*   **Find adverse events for "Cheerios"**
+*   **User Prompt:** "I got sick after eating Cheerios. Have other people reported problems?"
     ```
     food.search_adverse_events_by_product(product_name="Cheerios")
     ```
 
-*   **Get a summary of symptoms reported for "Lucky Charms"**
+*   **User Prompt:** "What are the common symptoms people report after eating 'Lucky Charms'?"
     ```
     food.get_symptom_summary_for_product(product_name="Lucky Charms")
     ```
