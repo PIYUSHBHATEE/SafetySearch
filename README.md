@@ -28,7 +28,7 @@ This MCP server offers **22 tools** to access product safety data, helping users
 
 1. **Clone or download the project:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/surabhya/SafetySearch.git
    cd SafetySearch
    ```
 
@@ -108,14 +108,18 @@ mcp install server.py
 
 ## 📋 Example Usage
 
-### Food Safety Check
-```
-
-```
-### Cometic Safety Check
+### Food Safety Tools
 ```
 ```
 
-### Drug Information
+### Drug Safety Tools
+```
+```
+
+### Cometic Safety Tools
+```
+```
+
+### Cross-Category Tools 
 ```
 ```
