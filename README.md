@@ -6,13 +6,12 @@
 
 > Search. Scan. Stay Safe.
 
-A comprehensive Model Context Protocol (MCP) server that provides access to FDA (Food and Drug Administration) data across three major categories: **Food**, **Drug**, and **Cosmetic** safety information.
+A comprehensive Model Context Protocol (MCP) server that provides access to FDA (Food and Drug Administration) data across two major categories: **Food** and **Cosmetic** safety information.
 
 ## 🎯 What This Server Provides
 
-This MCP server offers **26 tools** to access product safety data, helping users:
-- Check product recalls and safety alerts across all FDA categories
-- Search drug information, interactions, and adverse events
+This MCP server offers **19 tools** to access product safety data, helping users:
+- Check product recalls and safety alerts across FDA categories
 - Monitor food safety issues and recall trends
 - Review cosmetic safety reports and ingredient information
 - Compare FDA-regulated products across categories
@@ -88,18 +87,6 @@ uv run mcp install server.py
 | `search_adverse_events_by_product` | Searches for adverse event reports related to a specific food product. | `product_name: str` |
 | `get_symptom_summary_for_product` | Gets a list of reported symptoms (reactions) for a specific food product. | `product_name: str` |
 
-### Drug Safety Tools (7 tools) ✅
-
-| Tool | Description | Parameters |
-|------|-------------|------------|
-| `search_drugs` | Search for drug information by name, active ingredient, or description | `query: str` |
-| `get_drug_label` | Get detailed drug labeling information including warnings and dosage | `drug_name: str` |
-| `get_drug_approvals` | Get drug approvals for a specific year | `year: int` |
-| `check_drug_shortages` | Check current drug shortages and availability | None |
-| `search_drug_recalls` | Search for drug recalls by product name or company | `query: str` |
-| `get_drug_adverse_events` | Get adverse event reports for a specific drug | `drug_name: str` |
-| `check_drug_interactions` | Check potential interactions between two drugs | `drug1: str`, `drug2: str` |
-
 ### Cosmetic Safety Tools (6 tools) ✅
 
 | Tool | Description | Parameters |
@@ -115,7 +102,7 @@ uv run mcp install server.py
 
 | Tool | Description | Parameters |
 |------|-------------|------------|
-| `search_fda_products` | Search across all FDA categories (food, drug, cosmetic) | `category: str`, `query: str` |
+| `search_fda_products` | Search across all FDA categories (food, cosmetic) | `category: str`, `query: str` |
 | `get_fda_company_info` | Get information about a company across all FDA categories | `company_name: str` |
 | `compare_fda_products` | Compare two FDA-regulated products | `product1: str`, `product2: str` |
 | `get_fda_statistics` | Get FDA statistics and data for a specific category | `category: str` |
@@ -168,42 +155,6 @@ uv run mcp install server.py
     food.get_symptom_summary_for_product(product_name="Lucky Charms")
     ```
 
-### Drug Safety Tools
-*   **Search for drugs containing "aspirin"**
-    ```
-    drug.search_drugs(query="aspirin")
-    ```
-
-*   **Get detailed drug label for "acetaminophen"**
-    ```
-    drug.get_drug_label(drug_name="acetaminophen")
-    ```
-
-*   **Get drug approvals for 2024**
-    ```
-    drug.get_drug_approvals(year=2024)
-    ```
-
-*   **Check current drug shortages**
-    ```
-    drug.check_drug_shortages()
-    ```
-
-*   **Search for drug recalls**
-    ```
-    drug.search_drug_recalls(query="generic")
-    ```
-
-*   **Get adverse events for "ibuprofen"**
-    ```
-    drug.get_drug_adverse_events(drug_name="ibuprofen")
-    ```
-
-*   **Check interactions between "aspirin" and "ibuprofen"**
-    ```
-    drug.check_drug_interactions(drug1="aspirin", drug2="ibuprofen")
-    ```
-
 ### Cosmetic Safety Tools
 *   **Search for cosmetic products**
     ```
@@ -239,7 +190,6 @@ uv run mcp install server.py
 *   **Search across all FDA categories**
     ```
     common.search_fda_products(category="food", query="ice cream")
-    common.search_fda_products(category="drug", query="aspirin")
     common.search_fda_products(category="cosmetic", query="lotion")
     ```
 
@@ -250,13 +200,12 @@ uv run mcp install server.py
 
 *   **Compare products across categories**
     ```
-    common.compare_fda_products(product1="ice cream", product2="aspirin")
+    common.compare_fda_products(product1="ice cream", product2="lotion")
     ```
 
 *   **Get statistics for specific categories**
     ```
     common.get_fda_statistics(category="food")
-    common.get_fda_statistics(category="drug")
     common.get_fda_statistics(category="cosmetic")
     ```
 
@@ -275,9 +224,6 @@ From the project root directory, run:
 # Test Food Tools
 uv run python test_safetyscore/test_tools/test_food_tools.py
 
-# Test Drug Tools
-uv run python test_safetyscore/test_tools/test_drug_tools.py
-
 # Test Cosmetic Tools
 uv run python test_safetyscore/test_tools/test_cosmetic_tools.py
 
@@ -285,40 +231,11 @@ uv run python test_safetyscore/test_tools/test_cosmetic_tools.py
 uv run python test_safetyscore/test_tools/test_common_tools.py
 ```
 
-## 🔧 Technical Features
-
-### **Real FDA API Integration**
-- All tools use actual FDA openFDA API endpoints
-- Comprehensive error handling with user-friendly messages
-- Proper async implementation for better performance
-- Robust null checking and data validation
-
-### **Cross-Category Intelligence**
-- Smart category detection and routing
-- Unified search across all FDA databases
-- Company information aggregation
-- Product comparison across categories
-- Statistical analysis and trends
-
-### **Production Ready**
-- Comprehensive test suites
-- Proper error handling
-- User-friendly responses
-- Scalable architecture
-- MCP protocol compliance
-
 ## 📊 API Endpoints Used
 
 ### Food Safety
 - **Enforcement API**: `https://api.fda.gov/food/enforcement.json`
 - **Adverse Events API**: `https://api.fda.gov/food/event.json`
-
-### Drug Safety
-- **Label API**: `https://api.fda.gov/drug/label.json`
-- **Approval API**: `https://api.fda.gov/drug/nda.json`
-- **Shortage API**: `https://api.fda.gov/drug/shortage.json`
-- **Enforcement API**: `https://api.fda.gov/drug/enforcement.json`
-- **Adverse Events API**: `https://api.fda.gov/drug/event.json`
 
 ### Cosmetic Safety
 - **Label API**: `https://api.fda.gov/cosmetics/label.json`

@@ -8,6 +8,7 @@ import asyncio
 import sys
 import os
 from datetime import datetime
+import pytest
 
 # Add the project root to the path so we can import safetyscore
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
@@ -29,6 +30,7 @@ def get_tool_functions():
             tools[tool_name] = tool_obj.fn
     return tools
 
+@pytest.mark.asyncio
 async def test_common_tools():
     """Test all common tools with real FDA API examples."""
     
@@ -214,7 +216,7 @@ async def test_common_tools():
     
     return passed_tests == total_tests
 
-def test_individual_tool(tool_name, *args, **kwargs):
+def run_individual_tool(tool_name, *args, **kwargs):
     """Test a specific tool with given parameters."""
     tools = get_tool_functions()
     

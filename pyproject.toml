@@ -23,3 +23,9 @@ Issues = "https://github.com/surabhya/SafetySearch/issues"
 
 [project.scripts]
 safetysearch = "server:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+    "pytest-asyncio>=1.0.0",
+]
