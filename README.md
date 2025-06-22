@@ -43,22 +43,32 @@ This MCP server offers **26 tools** to access product safety data, helping users
 
 ## 🔧 Usage
 
-### Development Mode (MCP Inspector)
+### Using uv (Recommended)
+
+> **Note:**
+> If you have previously installed `mcp` in another project, or if you encounter errors like `Failed to spawn: mcp ... No such file or directory`, run:
+> ```bash
+> uv remove mcp
+> uv add "mcp[cli]>=1.0.0"
+> ```
+> This ensures the `mcp` binary is correctly linked to your current environment.
+
+#### Start the MCP Inspector (Development Mode)
 Test and validate the server using the MCP Inspector:
 ```bash
-mcp dev server.py
+uv run mcp dev server.py
 ```
 
-### Direct Execution
-Run the server directly:
+#### Start the Server Directly
+Run the server directly for testing:
 ```bash
-python server.py
+uv run python server.py
 ```
 
-### Install in Claude Desktop
+#### Install in Claude Desktop (Production)
 Install the server in Claude Desktop for production use:
 ```bash
-mcp install server.py
+uv run mcp install server.py
 ```
 
 ## 🛠️ Available Tools
