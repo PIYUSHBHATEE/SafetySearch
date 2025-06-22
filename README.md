@@ -75,14 +75,14 @@ uv run mcp install server.py
 
 | Tool | Description | Parameters |
 |------|-------------|------------|
-| `search_recalls_by_product_description` | Searches for food recalls by matching a query against the product description. | `query: str` |
-| `search_recalls_by_product_type` | Searches for recalls where the product description contains a product type (e.g., 'Bakery'). | `product_type: str` |
-| `search_recalls_by_specific_product` | Checks for any ongoing recalls for a single, specific food product. | `product_name: str` |
-| `search_recalls_by_classification` | Searches for food recalls by a specific classification (e.g., 'Class I'). | `classification: str` |
-| `search_recalls_by_code_info` | Searches for food recalls by code info (lot codes, batch numbers, etc.). | `code_info: str` |
-| `search_recalls_by_date` | Searches for food recalls initiated in the last N days. | `days: int` (default: 30) |
-| `search_adverse_events_by_product` | Searches for adverse event reports related to a specific food product. | `product_name: str` |
-| `get_symptom_summary_for_product` | Gets a list of reported symptoms (reactions) for a specific food product. | `product_name: str` |
+| `search_recalls_by_product_description` | Searches for food recalls with detailed analysis, safety insights, and comprehensive reporting. | `query: str` |
+| `search_recalls_by_product_type` | Searches for recalls by product type with detailed analysis, company trends, and safety recommendations. | `product_type: str` |
+| `search_recalls_by_specific_product` | Checks for recalls on specific products with detailed safety information and recommendations. | `product_name: str` |
+| `search_recalls_by_classification` | Searches for recalls by classification with detailed analysis and risk assessment. | `classification: str` |
+| `search_recalls_by_code_info` | Searches for recalls by code info with detailed product tracking and safety alerts. | `code_info: str` |
+| `search_recalls_by_date` | Searches for recalls by date range with detailed timeline analysis and safety trends. | `days: int` (default: 30) |
+| `search_adverse_events_by_product` | Searches for adverse events with detailed case analysis and safety insights. | `product_name: str` |
+| `get_symptom_summary_for_product` | Gets detailed symptom analysis, case details, and safety insights for a specific food product. | `product_name: str` |
 
 ## 📋 Example Usage
 
