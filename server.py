@@ -1,8 +1,8 @@
 from mcp.server.fastmcp import FastMCP
-from safetyscore.food import register_food_tools
-from safetyscore.drug import register_drug_tools
-from safetyscore.cosmetic import register_cosmetic_tools
-from safetyscore.common import register_common_tools
+from safetyscore.tools.food import register_food_tools
+from safetyscore.tools.drug import register_drug_tools
+from safetyscore.tools.cosmetic import register_cosmetic_tools
+from safetyscore.tools.common import register_common_tools
 
 # Create the MCP server
 mcp = FastMCP("SafetySearch")

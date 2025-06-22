@@ -63,16 +63,21 @@ mcp install server.py
 
 ## 🛠️ Available Tools
 
-### Food Safety Tools (6 tools)
+### Food Safety Tools (11 tools)
 
 | Tool | Description | Parameters |
 |------|-------------|------------|
-| `search_food_recalls` | Search for food recalls by product name, company, or description | `query: str` |
-| `get_recent_food_recalls` | Get food recalls from the last specified number of days | `days: int` (default: 30) |
-| `get_food_recall_by_class` | Get food recalls by classification (Class I, II, III) | `classification: str` |
-| `check_food_product_recall` | Check if a specific food product has any recalls | `product_name: str` |
-| `get_food_safety_alerts` | Get recent food safety alerts and warnings | None |
-| `analyze_food_recall_trends` | Analyze food recall patterns and trends | None |
+| `search_recalls_by_product_description` | Searches for food recalls by matching a query against the product description. | `query: str` |
+| `search_recalls_by_product_type` | Searches for recalls where the product description contains a product type (e.g., 'Bakery'). | `product_type: str` |
+| `search_recalls_by_specific_product` | Checks for any ongoing recalls for a single, specific food product. | `product_name: str` |
+| `search_recalls_by_classification` | Searches for food recalls by a specific classification (e.g., 'Class I'). | `classification: str` |
+| `search_recalls_by_reason` | Searches for food recalls by the reason for the recall (e.g., 'Salmonella'). | `reason: str` |
+| `search_recalls_by_code_info` | Searches for food recalls by a specific lot code or other code info. | `lot_code: str` |
+| `search_recalls_by_date` | Searches for food recalls initiated in the last N days. | `days: int` (default: 30) |
+| `search_critical_safety_alerts` | Gets high-priority food safety alerts (recent Class I recalls). | None |
+| `get_recall_trends_by_reason` | Analyzes the most common reasons for food recalls in the last 90 days. | None |
+| `search_adverse_events_by_product` | Searches for adverse event reports related to a specific food product. | `product_name: str` |
+| `get_symptom_summary_for_product` | Gets a list of reported symptoms (reactions) for a specific food product. | `product_name: str` |
 
 ### Drug Safety Tools (7 tools)
 
@@ -109,8 +114,60 @@ mcp install server.py
 ## 📋 Example Usage
 
 ### Food Safety Tools
-```
-```
+*   **Search for recalls of "ice cream"**
+    ```
+    food.search_recalls_by_product_description(query="ice cream")
+    ```
+
+*   **Find recalls for "Bakery" products**
+    ```
+    food.search_recalls_by_product_type(product_type="Bakery")
+    ```
+
+*   **Check for recalls on "Ben & Jerry's Chocolate Fudge Brownie"**
+    ```
+    food.search_recalls_by_specific_product(product_name="Ben & Jerry's Chocolate Fudge Brownie")
+    ```
+
+*   **List all "Class I" recalls**
+    ```
+    food.search_recalls_by_classification(classification="Class I")
+    ```
+
+*   **Find recalls due to "Salmonella"**
+    ```
+    food.search_recalls_by_reason(reason="Salmonella")
+    ```
+
+*   **Search for a recall with lot code "24-04-12"**
+    ```
+    food.search_recalls_by_code_info(lot_code="24-04-12")
+    ```
+
+*   **Get all recalls from the last 14 days**
+    ```
+    food.search_recalls_by_date(days=14)
+    ```
+
+*   **Check for critical safety alerts from the last week**
+    ```
+    food.search_critical_safety_alerts()
+    ```
+
+*   **Get top 5 reasons for recalls in the last 90 days**
+    ```
+    food.get_recall_trends_by_reason()
+    ```
+
+*   **Find adverse events for "Cheerios"**
+    ```
+    food.search_adverse_events_by_product(product_name="Cheerios")
+    ```
+
+*   **Get a summary of symptoms reported for "Lucky Charms"**
+    ```
+    food.get_symptom_summary_for_product(product_name="Lucky Charms")
+    ```
 
 ### Drug Safety Tools
 ```
