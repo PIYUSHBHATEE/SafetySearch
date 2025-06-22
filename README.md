@@ -168,3 +168,23 @@ mcp install server.py
 ### Cross-Category Tools 
 ```
 ```
+
+## 🧪 Running Tests
+
+To verify that all food tools work as expected, you can run the provided test suite:
+
+### Prerequisites
+- Ensure you have installed all dependencies (see Installation section above)
+
+### Run the Food Tools Test Suite
+
+From the project root directory, run:
+
+```bash
+uv run python test_safetyscore/test_tools/test_food_tools.py
+```
+
+This will execute a series of real-world and edge-case tests for all food tools using example values from the README. The output will show which tests passed or failed, and a summary at the end.
+
+- A passing test means the tool works and returns results or a user-friendly message for empty results.
+- Some tests may "fail" if there are no recent recalls or a code does not exist in the FDA database—this is expected and not a code bug.
