@@ -13,6 +13,9 @@ register_drug_tools(mcp)
 register_cosmetic_tools(mcp)
 register_common_tools(mcp)
 
+def main():
+    """Main function to run the SafetySearch MCP server."""
+    mcp.run()
+
 if __name__ == "__main__":
-    import asyncio
-    asyncio.run(mcp.run()) 
+    main() 
