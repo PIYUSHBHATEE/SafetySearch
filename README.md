@@ -110,10 +110,12 @@ mcp install server.py
 
 ### Food Safety Check
 ```
-User: "Check if there are any recalls for peanut butter products"
-→ Tool: search_food_recalls("peanut butter")
-→ Response: "Found 3 peanut butter recalls in the last year..."
+
+```
+### Cometic Safety Check
+```
 ```
 
 ### Drug Information
+```
 ```
