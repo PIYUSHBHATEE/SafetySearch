@@ -10,7 +10,7 @@ A Model Context Protocol (MCP) server that provides access to FDA (Food and Drug
 
 ## 🎯 What This Server Provides
 
-This MCP server offers **22 tools** to access product safety data, helping users:
+This MCP server offers **26 tools** to access product safety data, helping users:
 - Check product recalls and safety alerts
 - Search drug information and interactions
 - Monitor food safety issues
@@ -63,7 +63,7 @@ mcp install server.py
 
 ## 🛠️ Available Tools
 
-### Food Safety Tools (11 tools)
+### Food Safety Tools (9 tools)
 
 | Tool | Description | Parameters |
 |------|-------------|------------|
@@ -71,10 +71,8 @@ mcp install server.py
 | `search_recalls_by_product_type` | Searches for recalls where the product description contains a product type (e.g., 'Bakery'). | `product_type: str` |
 | `search_recalls_by_specific_product` | Checks for any ongoing recalls for a single, specific food product. | `product_name: str` |
 | `search_recalls_by_classification` | Searches for food recalls by a specific classification (e.g., 'Class I'). | `classification: str` |
-| `search_recalls_by_reason` | Searches for food recalls by the reason for the recall (e.g., 'Salmonella'). | `reason: str` |
-| `search_recalls_by_code_info` | Searches for food recalls by a specific lot code or other code info. | `lot_code: str` |
+| `search_recalls_by_code_info` | Searches for food recalls by code info (lot codes, batch numbers, etc.). | `code_info: str` |
 | `search_recalls_by_date` | Searches for food recalls initiated in the last N days. | `days: int` (default: 30) |
-| `search_critical_safety_alerts` | Gets high-priority food safety alerts (recent Class I recalls). | None |
 | `get_recall_trends_by_reason` | Analyzes the most common reasons for food recalls in the last 90 days. | None |
 | `search_adverse_events_by_product` | Searches for adverse event reports related to a specific food product. | `product_name: str` |
 | `get_symptom_summary_for_product` | Gets a list of reported symptoms (reactions) for a specific food product. | `product_name: str` |
@@ -102,7 +100,7 @@ mcp install server.py
 | `get_cosmetic_recalls` | Get recent cosmetic recalls and safety alerts | None |
 | `check_cosmetic_safety` | Check safety information for a cosmetic product | `product_name: str` |
 
-### Cross-Category Tools (3 tools)
+### Cross-Category Tools (4 tools)
 
 | Tool | Description | Parameters |
 |------|-------------|------------|
@@ -129,29 +127,19 @@ mcp install server.py
     food.search_recalls_by_specific_product(product_name="Ben & Jerry's Chocolate Fudge Brownie")
     ```
 
-*   **List all "Class I" recalls**
+*   **Find recalls with classification "Class I"**
     ```
     food.search_recalls_by_classification(classification="Class I")
     ```
 
-*   **Find recalls due to "Salmonella"**
+*   **Search for a recall with code info "222268"**
     ```
-    food.search_recalls_by_reason(reason="Salmonella")
-    ```
-
-*   **Search for a recall with lot code "24-04-12"**
-    ```
-    food.search_recalls_by_code_info(lot_code="24-04-12")
+    food.search_recalls_by_code_info(code_info="222268")
     ```
 
 *   **Get all recalls from the last 14 days**
     ```
     food.search_recalls_by_date(days=14)
-    ```
-
-*   **Check for critical safety alerts from the last week**
-    ```
-    food.search_critical_safety_alerts()
     ```
 
 *   **Get top 5 reasons for recalls in the last 90 days**
@@ -173,7 +161,7 @@ mcp install server.py
 ```
 ```
 
-### Cometic Safety Tools
+### Cosmetic Safety Tools
 ```
 ```
 
