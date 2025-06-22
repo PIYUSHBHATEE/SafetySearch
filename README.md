@@ -6,17 +6,15 @@
 
 > Search. Scan. Stay Safe.
 
-A comprehensive Model Context Protocol (MCP) server that provides access to FDA (Food and Drug Administration) data across two major categories: **Food** and **Cosmetic** safety information.
+A comprehensive Model Context Protocol (MCP) server that provides access to FDA (Food and Drug Administration) data for **Food** safety information.
 
 ## 🎯 What This Server Provides
 
-This MCP server offers **19 tools** to access product safety data, helping users:
-- Check product recalls and safety alerts across FDA categories
+This MCP server offers **8 tools** to access product safety data, helping users:
+- Check product recalls and safety alerts for food products
 - Monitor food safety issues and recall trends
-- Review cosmetic safety reports and ingredient information
-- Compare FDA-regulated products across categories
 - Analyze safety trends and company information
-- Get comprehensive cross-category safety insights
+- Get comprehensive food safety insights
 
 ## 🚀 Quick Start
 
@@ -73,7 +71,7 @@ uv run mcp install server.py
 
 ## 🛠️ Available Tools
 
-### Food Safety Tools (9 tools) ✅
+### Food Safety Tools (8 tools) ✅
 
 | Tool | Description | Parameters |
 |------|-------------|------------|
@@ -83,29 +81,8 @@ uv run mcp install server.py
 | `search_recalls_by_classification` | Searches for food recalls by a specific classification (e.g., 'Class I'). | `classification: str` |
 | `search_recalls_by_code_info` | Searches for food recalls by code info (lot codes, batch numbers, etc.). | `code_info: str` |
 | `search_recalls_by_date` | Searches for food recalls initiated in the last N days. | `days: int` (default: 30) |
-| `get_recall_trends_by_reason` | Analyzes the most common reasons for food recalls in the last 90 days. | None |
 | `search_adverse_events_by_product` | Searches for adverse event reports related to a specific food product. | `product_name: str` |
 | `get_symptom_summary_for_product` | Gets a list of reported symptoms (reactions) for a specific food product. | `product_name: str` |
-
-### Cosmetic Safety Tools (6 tools) ✅
-
-| Tool | Description | Parameters |
-|------|-------------|------------|
-| `search_cosmetics` | Search for cosmetic products by name or description | `query: str` |
-| `get_cosmetic_product_info` | Get detailed information about a cosmetic product | `product_name: str` |
-| `get_cosmetic_ingredients` | Get ingredient information for a cosmetic product | `product_name: str` |
-| `search_cosmetic_events` | Search for cosmetic adverse events and safety reports | `query: str` |
-| `get_cosmetic_recalls` | Get recent cosmetic recalls and safety alerts | None |
-| `check_cosmetic_safety` | Check safety information for a cosmetic product | `product_name: str` |
-
-### Cross-Category Tools (4 tools) ✅
-
-| Tool | Description | Parameters |
-|------|-------------|------------|
-| `search_fda_products` | Search across all FDA categories (food, cosmetic) | `category: str`, `query: str` |
-| `get_fda_company_info` | Get information about a company across all FDA categories | `company_name: str` |
-| `compare_fda_products` | Compare two FDA-regulated products | `product1: str`, `product2: str` |
-| `get_fda_statistics` | Get FDA statistics and data for a specific category | `category: str` |
 
 ## 📋 Example Usage
 
@@ -140,11 +117,6 @@ uv run mcp install server.py
     food.search_recalls_by_date(days=14)
     ```
 
-*   **Get top 5 reasons for recalls in the last 90 days**
-    ```
-    food.get_recall_trends_by_reason()
-    ```
-
 *   **Find adverse events for "Cheerios"**
     ```
     food.search_adverse_events_by_product(product_name="Cheerios")
@@ -153,60 +125,6 @@ uv run mcp install server.py
 *   **Get a summary of symptoms reported for "Lucky Charms"**
     ```
     food.get_symptom_summary_for_product(product_name="Lucky Charms")
-    ```
-
-### Cosmetic Safety Tools
-*   **Search for cosmetic products**
-    ```
-    cosmetic.search_cosmetics(query="lotion")
-    ```
-
-*   **Get detailed cosmetic product information**
-    ```
-    cosmetic.get_cosmetic_product_info(product_name="shampoo")
-    ```
-
-*   **Get cosmetic ingredients**
-    ```
-    cosmetic.get_cosmetic_ingredients(product_name="cream")
-    ```
-
-*   **Search for cosmetic adverse events**
-    ```
-    cosmetic.search_cosmetic_events(query="skin")
-    ```
-
-*   **Get recent cosmetic recalls**
-    ```
-    cosmetic.get_cosmetic_recalls()
-    ```
-
-*   **Check cosmetic safety**
-    ```
-    cosmetic.check_cosmetic_safety(product_name="lotion")
-    ```
-
-### Cross-Category Tools 
-*   **Search across all FDA categories**
-    ```
-    common.search_fda_products(category="food", query="ice cream")
-    common.search_fda_products(category="cosmetic", query="lotion")
-    ```
-
-*   **Get company information across categories**
-    ```
-    common.get_fda_company_info(company_name="Johnson")
-    ```
-
-*   **Compare products across categories**
-    ```
-    common.compare_fda_products(product1="ice cream", product2="lotion")
-    ```
-
-*   **Get statistics for specific categories**
-    ```
-    common.get_fda_statistics(category="food")
-    common.get_fda_statistics(category="cosmetic")
     ```
 
 ## 🧪 Running Tests
@@ -223,12 +141,6 @@ From the project root directory, run:
 ```bash
 # Test Food Tools
 uv run python test_safetyscore/test_tools/test_food_tools.py
-
-# Test Cosmetic Tools
-uv run python test_safetyscore/test_tools/test_cosmetic_tools.py
-
-# Test Common Tools
-uv run python test_safetyscore/test_tools/test_common_tools.py
 ```
 
 ## 📊 API Endpoints Used
@@ -236,12 +148,6 @@ uv run python test_safetyscore/test_tools/test_common_tools.py
 ### Food Safety
 - **Enforcement API**: `https://api.fda.gov/food/enforcement.json`
 - **Adverse Events API**: `https://api.fda.gov/food/event.json`
-
-### Cosmetic Safety
-- **Label API**: `https://api.fda.gov/cosmetics/label.json`
-- **Ingredient API**: `https://api.fda.gov/cosmetics/ingredient.json`
-- **Event API**: `https://api.fda.gov/cosmetics/event.json`
-- **Enforcement API**: `https://api.fda.gov/cosmetics/enforcement.json`
 
 ---
 

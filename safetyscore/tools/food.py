@@ -191,47 +191,6 @@ def register_food_tools(mcp: FastMCP):
         return f"Found {len(results)} food recalls in the last {days} days:\n\n" + "\n\n".join(formatted_results)
 
     @mcp.tool()
-    async def get_recall_trends_by_reason() -> str:
-        """Analyzes the most common reasons for food recalls in the last 90 days."""
-        ninety_days_ago = (datetime.now() - timedelta(days=90)).strftime('%Y%m%d')
-        search_query = f'recall_initiation_date:[{ninety_days_ago} TO {datetime.now().strftime("%Y%m%d")}]'
-        
-        # Fetch recalls and manually count reasons since the count parameter doesn't work
-        params = {
-            'search': search_query,
-            'limit': 100  # Get more results for better trend analysis
-        }
-
-        data, error = await api_client.make_request(RECALL_API_URL, params=params)
-        if error:
-            return error
-
-        results = data.get("results", [])
-        if not results:
-            return "Could not find any recall trends in the last 90 days."
-
-        # Manually count reasons
-        reason_counts = {}
-        for recall in results:
-            reason = recall.get('reason_for_recall', 'Unknown')
-            if reason:
-                # Clean up the reason text for better grouping
-                clean_reason = reason.split('.')[0].strip()  # Take first sentence
-                if len(clean_reason) > 50:  # Truncate very long reasons
-                    clean_reason = clean_reason[:50] + "..."
-                reason_counts[clean_reason] = reason_counts.get(clean_reason, 0) + 1
-
-        # Sort by count and get top 5
-        sorted_reasons = sorted(reason_counts.items(), key=lambda x: x[1], reverse=True)
-        top_reasons = sorted_reasons[:5]
-
-        if not top_reasons:
-            return "Could not analyze recall trends in the last 90 days."
-
-        trends = [f"- {reason}: {count} recalls" for reason, count in top_reasons]
-        return f"Top food recall reasons in the last 90 days (from {len(results)} recalls):\n" + "\n".join(trends)
-
-    @mcp.tool()
     async def search_adverse_events_by_product(product_name: str) -> str:
         """Searches for adverse event reports related to a specific food product."""
         search_query = f'products.name_brand:"{product_name}"'

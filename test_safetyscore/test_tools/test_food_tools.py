@@ -131,14 +131,7 @@ async def test_food_tools():
         days=14
     )
     
-    # Test 7: Get top 5 reasons for recalls in the last 90 days
-    print("\n📊 Testing recall trends analysis...")
-    await run_test(
-        "Get recall trends by reason",
-        tools["get_recall_trends_by_reason"]
-    )
-    
-    # Test 8: Find adverse events for "Cheerios"
+    # Test 7: Find adverse events for "Cheerios"
     print("\n🥣 Testing adverse events for Cheerios...")
     await run_test(
         "Search adverse events by product - Cheerios",
@@ -146,7 +139,7 @@ async def test_food_tools():
         product_name="Cheerios"
     )
     
-    # Test 9: Get a summary of symptoms reported for "Lucky Charms"
+    # Test 8: Get a summary of symptoms reported for "Lucky Charms"
     print("\n🍀 Testing symptom summary for Lucky Charms...")
     await run_test(
         "Get symptom summary for product - Lucky Charms",
