@@ -138,3 +138,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Environment variables
+# ---------------------
+# Ignore the local environment file.
+.env

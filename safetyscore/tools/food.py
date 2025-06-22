@@ -2,9 +2,16 @@ import httpx
 from mcp.server.fastmcp import FastMCP
 from datetime import datetime, timedelta
 from ..api_client import ApiClient
+import os
+from dotenv import load_dotenv
 
-RECALL_API_URL = "https://api.fda.gov/food/enforcement.json"
-ADVERSE_EVENT_API_URL = "https://api.fda.gov/food/event.json"
+# Load environment variables from a .env file if it exists
+load_dotenv()
+
+# Get API URLs from environment variables with fallbacks to the public defaults
+RECALL_API_URL = os.getenv("FDA_RECALL_API_URL", "https://api.fda.gov/food/enforcement.json")
+ADVERSE_EVENT_API_URL = os.getenv("FDA_ADVERSE_EVENT_API_URL", "https://api.fda.gov/food/event.json")
+
 api_client = ApiClient()
 
 def register_food_tools(mcp: FastMCP):

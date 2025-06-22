@@ -84,6 +84,34 @@ uv run mcp install server.py
 | `search_adverse_events_by_product` | Searches for adverse events with detailed case analysis and safety insights. | `product_name: str` |
 | `get_symptom_summary_for_product` | Gets detailed symptom analysis, case details, and safety insights for a specific food product. | `product_name: str` |
 
+## 🏛️ Architecture
+
+The server is built with a simple, modular architecture designed for clarity and extensibility.
+
+```mermaid
+graph TD
+    subgraph "SafetySearch MCP"
+        A[User] -- "Tool Call" --> B["server.py<br/>(MCP Entrypoint)"];
+        B -- "Executes" --> C{"Food Tools<br/>(safetyscore/tools/food.py)"};
+        C -- "HTTP Request" --> D["API Client<br/>(safetyscore/api_client.py)"];
+    end
+    D -- "Calls" --> E["openFDA API<br/>(api.fda.gov)"];
+
+    subgraph "Testing Framework"
+      F[Pytest] -- "Runs" --> G["Test Suite<br/>(test_safetyscore/)"];
+      G -- "Tests" --> C;
+    end
+```
+
+-   **`server.py`**: The main entry point of the MCP server. It initializes the toolsets and makes them available to the MCP environment.
+-   **`safetyscore/`**: The core Python package containing all the logic.
+    -   **`tools/`**: This directory contains the different tool modules. Currently, it only contains `food.py`.
+        -   `food.py`: Implements the 8 tools for food safety, which provide detailed analysis and safety insights.
+    -   **`api_client.py`**: A centralized asynchronous HTTP client for interacting with the external openFDA API. It handles request/response logic, error handling, and API key management.
+-   **`test_safetyscore/`**: Contains the test suite for the server, ensuring the reliability and correctness of the tools.
+
+This structure separates concerns, making it easy to maintain and add new toolsets in the future.
+
 ## 📋 Example Usage
 
 ### Food Safety Tools

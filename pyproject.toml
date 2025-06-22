@@ -1,6 +1,6 @@
 [project]
 name = "safetysearch-mcp-server"
-version = "1.0.0"
+version = "0.1.0"
 description = "A comprehensive MCP server providing FDA safety data across food, drug, and cosmetic categories"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -8,6 +8,7 @@ dependencies = [
     "httpx>=0.24.0",
     "mcp[cli]>=1.0.0",
     "pydantic>=2.0.0",
+    "python-dotenv>=1.1.0",
 ]
 
 [project.optional-dependencies]
