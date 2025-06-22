@@ -1,0 +1,6 @@
+# This is a CODEOWNERS file.
+# Lines starting with '#' are comments.
+
+# The following line designates 'surabhya' as the owner of all files in the repository.
+# Every pull request will require an approval from @surabhya
+* @surabhya 
